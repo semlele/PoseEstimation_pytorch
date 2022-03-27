@@ -23,15 +23,15 @@ class FFProbeResult(NamedTuple):
 
 def ffprobe(file_path) -> FFProbeResult:
     command_array = ["ffprobe",
-                     "-v", "quiet",
-                     "-print_format", "json",
-                     "-show_format",
-                     "-show_streams",
-                     file_path]
+                    "-v", "quiet",
+                    "-print_format", "json",
+                    "-show_format",
+                    "-show_streams",
+                    file_path]
     result = subprocess.run(command_array, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
     return FFProbeResult(return_code=result.returncode,
-                         json=result.stdout,
-                         error=result.stderr)
+                        json=result.stdout,
+                        error=result.stderr)
 
 
 # openpose setup
@@ -119,7 +119,7 @@ while(cap.isOpened()):
         break
 
     posed_frame = process_frame(frame, body=not args.no_body,
-                                       hands=not args.no_hands)
+                                hands=not args.no_hands)
 
     if writer is None:
         input_framesize = posed_frame.shape[:2]
